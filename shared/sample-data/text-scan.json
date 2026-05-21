@@ -1,0 +1,13 @@
+{
+  "media_type": "text",
+  "source_url": "https://example.com/article",
+  "content": "This product improves trust and improves safety. This product improves trust and improves safety. The platform provides clear evidence and provides clear evidence for every decision.",
+  "metadata": {
+    "page_title": "Synthetic media article",
+    "selector": "article p"
+  },
+  "options": {
+    "explain": true,
+    "privacy_mode": "standard"
+  }
+}

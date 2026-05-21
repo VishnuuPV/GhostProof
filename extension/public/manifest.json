@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "GhostProof",
+  "version": "0.1.0",
+  "description": "AI-powered synthetic media detection and explainable authenticity warnings.",
+  "permissions": ["activeTab", "contextMenus", "storage", "scripting"],
+  "host_permissions": ["<all_urls>", "http://localhost:8000/*"],
+  "background": {
+    "service_worker": "assets/background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["assets/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "GhostProof",
+    "default_popup": "index.html"
+  }
+}

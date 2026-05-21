@@ -1,0 +1,33 @@
+{
+  "media_type": "multimodal",
+  "source_url": "https://example.com/post/42",
+  "metadata": {
+    "modalities": {
+      "image": {
+        "source_url": "https://example.com/post/42/image.png",
+        "metadata": {
+          "naturalWidth": 1024,
+          "naturalHeight": 1024
+        }
+      },
+      "text": {
+        "content": "The system provides a comprehensive robust solution. The system provides a comprehensive robust solution. Evidence remains clear and evidence remains clear.",
+        "metadata": {
+          "page_title": "Suspicious post"
+        }
+      },
+      "audio": {
+        "source_url": "https://example.com/post/42/audio.mp3",
+        "metadata": {
+          "duration": 31.4,
+          "syntheticHarmonicsScore": 0.68,
+          "prosodyFlatnessScore": 0.51
+        }
+      }
+    }
+  },
+  "options": {
+    "explain": true,
+    "privacy_mode": "standard"
+  }
+}

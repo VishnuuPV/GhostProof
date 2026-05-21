@@ -1,0 +1,14 @@
+{
+  "media_type": "image",
+  "source_url": "https://cdn.example.com/generated-avatar.png",
+  "metadata": {
+    "naturalWidth": 1024,
+    "naturalHeight": 1024,
+    "software": "Stable Diffusion",
+    "alt": "Profile portrait"
+  },
+  "options": {
+    "explain": true,
+    "privacy_mode": "strict"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ghostproof.dev/schemas/scan.schema.json",
+  "title": "GhostProof Scan Report",
+  "type": "object",
+  "required": [
+    "scan_id",
+    "created_at",
+    "media_type",
+    "risk_level",
+    "authenticity_score",
+    "ai_probability",
+    "confidence",
+    "summary",
+    "modality_scores",
+    "evidence",
+    "content_hash"
+  ],
+  "properties": {
+    "scan_id": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "media_type": { "enum": ["image", "video", "audio", "text", "multimodal"] },
+    "risk_level": { "enum": ["low", "medium", "high", "critical"] },
+    "authenticity_score": { "type": "number", "minimum": 0, "maximum": 100 },
+    "ai_probability": { "type": "number", "minimum": 0, "maximum": 1 },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "summary": { "type": "string" },
+    "modality_scores": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/modalityResult" }
+    },
+    "evidence": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/evidence" }
+    },
+    "content_hash": { "type": "string" },
+    "tamper_hash": { "type": "string" }
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "required": ["code", "title", "description", "modality", "severity"],
+      "properties": {
+        "code": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "modality": { "enum": ["image", "video", "audio", "text", "multimodal"] },
+        "severity": { "type": "number", "minimum": 0, "maximum": 1 },
+        "location": { "type": "object" },
+        "recommendation": { "type": "string" }
+      }
+    },
+    "modalityResult": {
+      "type": "object",
+      "required": [
+        "media_type",
+        "ai_probability",
+        "authenticity_score",
+        "confidence",
+        "reasons",
+        "evidence",
+        "features",
+        "model_version"
+      ],
+      "properties": {
+        "media_type": { "enum": ["image", "video", "audio", "text", "multimodal"] },
+        "ai_probability": { "type": "number", "minimum": 0, "maximum": 1 },
+        "authenticity_score": { "type": "number", "minimum": 0, "maximum": 100 },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "reasons": { "type": "array", "items": { "type": "string" } },
+        "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+        "suspicious_regions": { "type": "array", "items": { "type": "object" } },
+        "manipulated_timestamps": { "type": "array", "items": { "type": "object" } },
+        "features": { "type": "object" },
+        "model_version": { "type": "string" }
+      }
+    }
+  }
+}
